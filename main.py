@@ -1,5 +1,5 @@
 
-
+import os
 import yaml
 import logging
 from datetime import datetime
@@ -7,6 +7,7 @@ from src.checker import zkontroluj_web
 from src.storage import uloz_vysledek
 from src.reporter import generuj_dashboard
 
+os.makedirs("outputs", exist_ok=True)
 
 logging.basicConfig(
     level=logging.INFO,

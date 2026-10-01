@@ -33,7 +33,6 @@ docker run --rm -v "$(pwd)/outputs:/app/outputs" hovnoprdelstetky/god-not-respon
 
 ```bash
 pip install -r requirements.txt
-mkdir outputs
 python main.py
 ```
 

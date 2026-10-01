@@ -1,4 +1,4 @@
-[![muj prvni workflow](https://github.com/numpe2-cloud/God-not-responding/actions/workflows/testy.yml/badge.svg)](https://github.com/numpe2-cloud/God-not-responding/actions/workflows/testy.yml)
+[![muj prvni workflow](https://github.com/numpe2-cloud/god-not-responding/actions/workflows/testy.yml/badge.svg)](https://github.com/numpe2-cloud/god-not-responding/actions/workflows/testy.yml)
 # god-not-responding
 
 > Gods never sleep, but sometimes their servers do.
@@ -13,12 +13,34 @@ počítá velikost stránky a generuje HTML dashboard s výsledky.
 
 ![Dashboard preview](dashboard_preview.png)
 
-## Instalace a spuštění
+## Spuštění v Dockeru
+
+Kontejner jednou zkontroluje všechny weby, zapíše výsledky a skončí.
+Výsledky zůstanou na disku ve složce `outputs/` díky volume v `docker-compose.yaml`.
+
+```bash
+docker compose up --build
+```
+
+Hotový image je i na Docker Hubu:
+
+```bash
+docker pull hovnoprdelstetky/god-not-responding:latest
+docker run --rm -v "$(pwd)/outputs:/app/outputs" hovnoprdelstetky/god-not-responding:latest
+```
+
+## Spuštění bez Dockeru
 
 ```bash
 pip install -r requirements.txt
+mkdir outputs
 python main.py
 ```
+
+## CI/CD
+
+Při každém pushi na `master` spustí GitHub Actions testy (`pytest`) a kontrolu stylu (`flake8`)
+na Pythonu 3.10 a 3.11. Když projdou, sestaví Docker image a nahraje ho na Docker Hub.
 
 ## Sledované weby
 
@@ -58,7 +80,7 @@ python main.py
 ## Konfigurace
 
 Weby ke sledování se nastavují v souboru `config.yaml`.
-Stačí upravit seznam `endpoints` — každý web je jeden řádek s URL.
+Stačí upravit seznam `weby` — každý web je jedna položka s URL.
 
 ## Automatické spouštění
 
@@ -67,5 +89,5 @@ Nastavíš čas spuštění a systém spustí `python main.py` automaticky každ
 
 ## Požadavky
 
-- Python 3.8+
+- Python 3.12+ (nebo Docker)
 - Viz `requirements.txt`

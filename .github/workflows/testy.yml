@@ -1,4 +1,4 @@
-name: muj prvni workflow
+name: Test, lint and publish image
 
 on:
   push:

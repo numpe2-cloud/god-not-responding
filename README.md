@@ -1,4 +1,4 @@
-[![muj prvni workflow](https://github.com/numpe2-cloud/god-not-responding/actions/workflows/testy.yml/badge.svg)](https://github.com/numpe2-cloud/god-not-responding/actions/workflows/testy.yml)
+[![Test, lint and publish image](https://github.com/numpe2-cloud/god-not-responding/actions/workflows/testy.yml/badge.svg)](https://github.com/numpe2-cloud/god-not-responding/actions/workflows/testy.yml)
 # god-not-responding
 
 > Gods never sleep, but sometimes their servers do.
